@@ -28,10 +28,10 @@ export default function App() {
         toast.error("No movies found for your request.");
         return;
       }
+
       setMovies(fetchedMovies);
-    } catch (err) {
+    } catch {
       setError(true);
-      console.log("error", err);
     } finally {
       setIsLoading(false);
     }
@@ -47,7 +47,7 @@ export default function App() {
 
   return (
     <>
-      <SearchBar onSubmit={handleSearch} />
+      <SearchBar onSearch={handleSearch} />
       <Toaster position="top-right" />
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
